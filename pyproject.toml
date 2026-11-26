@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycubin"
+version = "0.1.0"
+requires-python = ">=3.10"
+readme = "README.md"
+authors = [{ name = "Aryan V S" }]
+description = "Compile a small Python subset straight to a cubin for NVIDIA Blackwell (sm_100a), without any NVIDIA toolchain"
+dependencies = ["numpy"]
+
+[project.urls]
+Repository = "https://github.com/a-r-r-o-w/pycubin"
+Blog = "https://a-r-r-o-w.github.io/blog/00006_compiling_python_to_sass/"
+
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[tool.setuptools.packages.find]
+include = ["pycubin*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501", "E402", "F841", "E741"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
